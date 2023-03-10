@@ -14,7 +14,7 @@
 
 LOCAL_PATH := $(call my-dir)
 
-libdbusBindingGenCFlags := -Wno-unused-parameter
+libdbusBindingGenCFlags := -Wall -Werror
 
 include $(CLEAR_VARS)
 LOCAL_MODULE := libdbus-binding-gen-host
@@ -25,7 +25,7 @@ LOCAL_C_INCLUDES := \
     $(LOCAL_PATH) \
     $(TOP)/external/dbus \
     $(TOP)/external/gtest/include
-LOCAL_SHARED_LIBRARIES := libbrillo-host libchrome-host
+LOCAL_SHARED_LIBRARIES := libbrillo libchrome
 LOCAL_STATIC_LIBRARIES := libexpat
 LOCAL_SRC_FILES := \
     chromeos-dbus-bindings/adaptor_generator.cc \
@@ -44,7 +44,7 @@ LOCAL_MODULE := dbus-binding-generator
 LOCAL_CFLAGS := $(libdbusBindingGenCFlags)
 LOCAL_CPP_EXTENSION := .cc
 LOCAL_C_INCLUDES := $(LOCAL_PATH) $(TOP)/external/gtest/include
-LOCAL_SHARED_LIBRARIES := libbrillo-host libchrome-host
+LOCAL_SHARED_LIBRARIES := libbrillo libchrome
 LOCAL_SRC_FILES := chromeos-dbus-bindings/generate_chromeos_dbus_bindings.cc
 LOCAL_STATIC_LIBRARIES := libdbus-binding-gen-host libexpat
 include $(BUILD_HOST_EXECUTABLE)
@@ -57,7 +57,7 @@ LOCAL_CPP_EXTENSION := .cc
 LOCAL_C_INCLUDES := \
     $(LOCAL_PATH) \
     $(TOP)/external/dbus
-LOCAL_SHARED_LIBRARIES := libbrillo-host libchrome-host
+LOCAL_SHARED_LIBRARIES := libbrillo libchrome
 LOCAL_STATIC_LIBRARIES := libdbus-binding-gen-host libgmock_host libexpat
 LOCAL_SRC_FILES := \
     chromeos-dbus-bindings/adaptor_generator_unittest.cc \
